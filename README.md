@@ -1,6 +1,6 @@
 # raspberrypi3
 
-##Utils
+## Utils
 
 ### How to know the MAC address knowing the interface
 
@@ -9,9 +9,10 @@
 
 ### How to connect on the EDUROAM on raspberry pi 3 B
 
-Edit the folloing files
+Edit the following files
 
-I could be with your prefered text editor
+It could be with your favorite text editor
+
 e.g. `sudo nano`
 
 /etc/network/interfaces
@@ -50,3 +51,5 @@ network={
     phase2="auto=NONE"
 }
 ```
+
+Then reboot.
