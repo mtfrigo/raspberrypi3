@@ -2,14 +2,14 @@
 #include <stdio.h>
 #include <wiringPi.h>
 
-#define button 4
+#define button 17
 
 //Needed if there is a output pin
 void cleanUp(void) {
     //digitalWrite(led, 0);
 }
 
-void main(void) {
+int main(void) {
 
     wiringPiGpioSetup();
 
@@ -18,7 +18,7 @@ void main(void) {
 
     for(;;){
 
-        delay(100);
+        delay(1000);
         if(digitalRead(button) == 1){
 
             printf("Button HIGH\n\r");
