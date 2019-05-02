@@ -6,6 +6,8 @@
 
 ```cat /sys/class/net/wlan0/address```
 
+Where wlan0 is the interface.
+
 
 ### How to connect on the EDUROAM on raspberry pi 3 B
 
