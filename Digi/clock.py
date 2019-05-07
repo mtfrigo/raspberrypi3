@@ -14,7 +14,7 @@ while(True):
    hour = now.hour
    minute = now.minute
    second = now.second
-   currenttime = [ int(hour / 10), hour % 10, int(minute / 10), minute % 10 ]
+   currenttime = [ 1, 1, 1, 1 ]
  
    Display.Show(currenttime)
    Display.ShowDoublepoint(second % 2)

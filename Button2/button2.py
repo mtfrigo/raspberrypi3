@@ -13,6 +13,6 @@ GPIO.setup(led, GPIO.OUT)
  
 while True:
     if GPIO.input(button1) == GPIO.HIGH:
-        GPIO.output(led, True)
+        print("Botao high")
     if GPIO.input(button2) == GPIO.HIGH:
-        GPIO.output(led, False)
+        print("Botao2 HIGH")

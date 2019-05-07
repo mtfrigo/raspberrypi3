@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <wiringPi.h>
 
-#define button 17
+#define button 12
 
 //Needed if there is a output pin
 void cleanUp(void) {
@@ -11,7 +11,7 @@ void cleanUp(void) {
 
 int main(void) {
 
-    wiringPiGpioSetup();
+    wiringPiSetupGpio();
 
     //pinMode(led, OUTPUT);
     pinMode(button, INPUT);
