@@ -23,8 +23,12 @@ def readadc(adcnum):
 #Sensitivitaet des Sensors kann mit "x > 250" veraendert werden
 while True:
     x = readadc(sound)
+    print x
     if(x > 250):
-        GPIO.output(led, True)
-        sleep(1)
+        print "> 250"
+
     else:
-        GPIO.output(led, False)
+        print "<<<<< 250"
+
+    sleep(1)
+
