@@ -1,52 +1,46 @@
-#Install
+# Install
 
-http://www.bluez.org/download/
+1. Go to [BlueZ download site](http://www.bluez.org/download/)
+2. Copy the link of the version you want (e.g. http://www.kernel.org/pub/linux/bluetooth/bluez-5.50.tar.xz)
+3. In Raspberry Pi use the command `gwet http://www.bluez.org/download/`
+4. `tar xvf bluez...`
+5. `cd bluez...`
+6. `sudo apt-get install libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev`
+7. `./configure`
+8. `make`
+9. `sudo make install`
+10. `sudo systemctl status bluetooth`
+11. `sudo nano /lib/systemd/system/bluetooth.service`
+12. Add to the line ExecStart=... the --experimental flag 
+    Should be like `ExecStart=/usr/local/libexec/bluetooth/bluetoohd --experimental`
+13. Restart the bluetooth service (I dont remember exactly the command, but when you use `sudo systemctl status bluetooth` now should show the flag --experimental
 
-```
-gwet http://www.bluez.org/download/
-```
 
+# Using BluetoothCtl
 
-tar xvf bluez....
+## Connecting to device
 
-cd bluez....
+1. `sudo bluetoothctl`
+2. `power on`
+3. `scan on` then wait few seconds and turn off `scan off`
+4. find the MAC of the device you want to connect
+5. `connect <MAC>`
 
-nano README (check the dependencies)
+## Write and Read 
 
-apt-cache search .... (like libglib)
+With the device connected
 
-then 
+6. `menu gatt`
+7. `list-attributes`
+8. find the right attribute you want, there is probably one for writting and other for reading
+9. `select-attribute <attribute>`
 
-e.g.  sudo apt-get install libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev
-
-./configure
-
-make
-
-sudo make install
-
-systemctl status bluetooh
-
-sudo nano /lib/systemd/system/bluetooth.service
-
-change the line ExecStart=...
-
-to
-
-ExecStart=/usr/local/libexec/bluetooth/bluetoohd --experimental
-(add --experimental at the end)
-
-sudo systemctl start bluetooth
-
-sudo bluetoothctl
-
-scan on
-connect <MAC>
-
-menu gatt
-
-list-attributes
-select-attribute <attribute>
-
-e.g.
-write 0x30 (write 0 in hex)
+    For write to the XDK BLE application, for example, you should select 
+    `select-attribute /org/bluez/hci0/dev_FA_7C_39_BB_25_84/service000e/char000f`
+    
+    And then use `write 0x30` (write 0 in hex)
+    
+    For read to the XDK BLE application, for example, you should select 
+    `select-attribute /org/bluez/hci0/dev_FA_7C_39_BB_25_84/service000e/char0011`
+    
+    And then use `read`
