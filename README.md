@@ -58,7 +58,7 @@ Then reboot.
 
 ### How to connect to vpn in raspberry pi
 
-You check the full guide here (https://cs.uwaterloo.ca/twiki/view/CF/OpenConnect)[OpenConnect]
+You can check the full guide here: [OpenConnect](https://cs.uwaterloo.ca/twiki/view/CF/OpenConnect)
 
 First install OpenConnect:
 
