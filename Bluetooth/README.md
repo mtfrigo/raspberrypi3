@@ -55,3 +55,20 @@ With the device connected
     `select-attribute /org/bluez/hci0/dev_FA_7C_39_BB_25_84/service000e/char0011`
     
     And then use `read`
+
+
+## Bluepy
+
+Installation  (Python2)
+
+```
+sudo apt-get install python-pip libglib2.0-dev
+sudo pip install bluepy
+```
+
+Installation  (Python3)
+
+```
+sudo apt-get install python3-pip libglib2.0-dev
+$sudo pip3 install bluepy
+```
