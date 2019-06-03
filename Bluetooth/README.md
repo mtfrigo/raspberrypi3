@@ -33,6 +33,17 @@ With the device connected
 6. `menu gatt`
 7. `list-attributes`
 8. find the right attribute you want, there is probably one for writting and other for reading
+
+    For this XDK example, we know that:
+    
+    1ed9e2c0-266f-11e6-850b-0002a5d5c51b is the UUID to read the service value
+    
+    
+    0c68d100-266f-11e6-b388-0002a5d5c51b is the UUID to write to the service
+
+![Bluetooth example](bluetooth.png)
+
+
 9. `select-attribute <attribute>`
 
     For write to the XDK BLE application, for example, you should select 
