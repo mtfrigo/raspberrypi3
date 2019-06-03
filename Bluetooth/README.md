@@ -13,7 +13,7 @@
 11. `sudo nano /lib/systemd/system/bluetooth.service`
 12. Add to the line ExecStart=... the --experimental flag 
     Should be like `ExecStart=/usr/local/libexec/bluetooth/bluetoohd --experimental`
-13. Restart the bluetooth service (I dont remember exactly the command, but when you use `sudo systemctl status bluetooth` now should show the flag --experimental
+13. Restart the bluetooth service  `sudo systemctl restart bluetooth` (I dont remember exactly the command, but when you use `sudo systemctl status bluetooth` now should show the flag --experimental
 
 
 # Using BluetoothCtl
