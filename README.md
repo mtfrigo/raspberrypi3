@@ -55,3 +55,20 @@ network={
 ```
 
 Then reboot.
+
+### How to connect to vpn in raspberry pi
+
+You check the full guide here (https://cs.uwaterloo.ca/twiki/view/CF/OpenConnect)[OpenConnect]
+
+First install OpenConnect:
+
+`apt-get install openconnect network-manager-openconnect-gnome`
+
+
+Then:
+
+
+`sudo openconnect -u USER_ID -b VPN_ADDRESS`
+
+Where **USER_ID** is your vpn id and
+**VPN_ADDRESS** is the address for the VPN (*vpn.informatik.uni-stuttgart.de* at the moment)
