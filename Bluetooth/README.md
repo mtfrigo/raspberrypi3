@@ -2,7 +2,9 @@
 
 Follow all these steps: [Deploying BlueZ v5.50 on Raspberry Pi3](https://3pl46c46ctx02p7rzdsvsg21-wpengine.netdna-ssl.com/wp-content/uploads/2019/03/T1804_How-to-set-up-BlueZ_LFC_FINAL-1.pdf?utm_campaign=developer&utm_source=internal&utm_medium=blog&utm_content=Deploying-BlueZ-v5.50-on-Raspberry-Pi3-Update)
 
-The version used for the scripts of the Raspberry Pi is 
+The version used for the scripts of the Raspberry Pi is
+
+
 ![Bluetooth example](pi_config.png)
 
 # Using BluetoothCtl
