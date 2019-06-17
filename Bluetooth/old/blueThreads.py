@@ -154,7 +154,7 @@ class BluepyExample(DefaultDelegate):
                 self._svc = self._peripheral.getServiceByUUID(self._service_uuid)
 
                 print "Finding descriptors...\n"
-                self._descs = self._svc.d()
+                self._descs = self._svc.getDescriptors()
                 time.sleep(1.0) # Allow sensor to stabilise
 
                 while self._write_handle is None and self._subscribe_handle is None:
