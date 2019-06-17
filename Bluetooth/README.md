@@ -1,20 +1,9 @@
 # Install
 
-1. Go to [BlueZ download site](http://www.bluez.org/download/)
-2. Copy the link of the version you want (e.g. http://www.kernel.org/pub/linux/bluetooth/bluez-5.50.tar.xz)
-3. In Raspberry Pi use the command `gwet http://www.bluez.org/download/`
-4. `tar xvf bluez...`
-5. `cd bluez...`
-6. `sudo apt-get install libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev`
-7. `./configure`
-8. `make`
-9. `sudo make install`
-10. `sudo systemctl status bluetooth`
-11. `sudo nano /lib/systemd/system/bluetooth.service`
-12. Add to the line ExecStart=... the --experimental flag 
-    Should be like `ExecStart=/usr/local/libexec/bluetooth/bluetoohd --experimental`
-13. Restart the bluetooth service  `sudo systemctl restart bluetooth` (I dont remember exactly the command, but when you use `sudo systemctl status bluetooth` now should show the flag --experimental
+Follow all these steps: [Deploying BlueZ v5.50 on Raspberry Pi3](https://3pl46c46ctx02p7rzdsvsg21-wpengine.netdna-ssl.com/wp-content/uploads/2019/03/T1804_How-to-set-up-BlueZ_LFC_FINAL-1.pdf?utm_campaign=developer&utm_source=internal&utm_medium=blog&utm_content=Deploying-BlueZ-v5.50-on-Raspberry-Pi3-Update)
 
+The version used for the scripts of the Raspberry Pi is 
+![Bluetooth example](pi_config.png)
 
 # Using BluetoothCtl
 
