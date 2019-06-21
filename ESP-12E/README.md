@@ -47,7 +47,7 @@ Change `LED_BUILTIN` to `4`
 
 Build the circuit of the photo to test
 
-![Example 1](ex1.jpg)
+![Example 1](ex1.jpg) ![Example 1_2](ex1_2.jpg)
 
 And upload to NodeMCU
 
