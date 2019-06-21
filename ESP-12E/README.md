@@ -17,25 +17,25 @@ Go to File > Preferences
 
 Add `https://arduino.esp8266.com/stable/package_esp8266com_index.json` to Additional Boards Manager URLs 
 
-![Preferences](preferences.png)
+<img src="./preferences.png" width="500">
 
 Go to Tools > Boards: "..." > Boards Manager 
 
-![Board](board.png)
+<img src="./board.png" width="500">
 
 And select esp8266 Community
 
-![Boards Manager](boardinfo.png)
+<img src="./boardinfo.png" width="500">
 
 ## Using 
 
 Go to Tools > Boards: "..." > NodeMCU 1.0 (ESP12-E Module)
 
-![Select Board](selectboard.png)
+<img src="./selectboard.png" width="500">
 
 Change Upload Speed to 9600
 
-![Upload Speed](upspeed.png | width=100)
+<img src="./upspeed.png" width="500">
 
 ## First example
 
@@ -47,7 +47,9 @@ Change `LED_BUILTIN` to `4`
 
 Build the circuit of the photo to test
 
-![Example 1](ex1.jpg) ![Example 1_2](ex1_2.jpg?s=50)
+
+<img src="./ex1.jpg" width="200">
+<img src="./ex1_2.jpg" width="200">
 
 And upload to NodeMCU
 
