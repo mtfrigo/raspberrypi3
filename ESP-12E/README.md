@@ -35,7 +35,7 @@ Go to Tools > Boards: "..." > NodeMCU 1.0 (ESP12-E Module)
 
 Change Upload Speed to 9600
 
-![Upload Speed](upspeed.png)
+![Upload Speed](upspeed.png | width=100)
 
 ## First example
 
@@ -47,7 +47,7 @@ Change `LED_BUILTIN` to `4`
 
 Build the circuit of the photo to test
 
-![Example 1](ex1.jpg) ![Example 1_2](ex1_2.jpg)
+![Example 1](ex1.jpg) ![Example 1_2](ex1_2.jpg | width=100)
 
 And upload to NodeMCU
 
