@@ -25,7 +25,7 @@ Go to Tools > Boards: "..." > Boards Manager
 
 And select esp8266 Community
 
-![Boards Manager](boardsinfo.png)
+![Boards Manager](boardinfo.png)
 
 ## Using 
 
@@ -47,7 +47,7 @@ Change `LED_BUILTIN` to `4`
 
 Build the circuit of the photo to test
 
-![Example 1](ex1.png)
+![Example 1](ex1.jpg)
 
 And upload to NodeMCU
 
