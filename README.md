@@ -65,23 +65,23 @@ sudo apt purge openresolv dhcpcd5
 sudo ln -sf /lib/systemd/resolv.conf /etc/resolv.conf
 ```
 
-<img src="./Hotspot/hotspot1.png" width="500">
+<img src="./Hotspot/hotspot1.png" width="200">
 
-<img src="./Hotspot/hotspot2.png" width="500">
+<img src="./Hotspot/hotspot2.png" width="200">
 
 ```
 sudo reboot
 ```
 
-<img src="./Hotspot/hotspot3.png" width="500">
+<img src="./Hotspot/hotspot3.png" width="200">
 
-<img src="./Hotspot/hotspot4.png" width="500">
+<img src="./Hotspot/hotspot4.png" width="200">
 
-<img src="./Hotspot/hotspot5.png" width="500">
+<img src="./Hotspot/hotspot5.png" width="200">
 
-<img src="./Hotspot/hotspot6.png" width="500">
+<img src="./Hotspot/hotspot6.png" width="200">
 
-<img src="./Hotspot/hotspot7.png" width="500">
+<img src="./Hotspot/hotspot7.png" width="200">
 
 Save
 
