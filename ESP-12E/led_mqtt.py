@@ -1,13 +1,8 @@
-#!/usr/bin/env python3
-# NeoPixel library strandtest example
-# Author: Tony DiCola (tony@tonydicola.com)
-#
-# Direct port of the Arduino NeoPixel library strandtest example.  Showcases
-# various animations on a strip of NeoPixels.
 
 import time
 from neopixel import *
 import argparse
+import paho.mqtt.client as mqtt
 
 # LED strip configuration:
 LED_COUNT      = 3      # Number of LED pixels.
@@ -19,9 +14,17 @@ LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
 LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
+def on_connect(client, userdata, flags, rc):
+    client.subscribe("MTFESP")
 
+def on_message(client, userdata, msg):
+    print(msg.topic+" -  "+str(msg.payload))
+    changeLedColor(strip, Color(255, 0, 0))
+    #time.sleep(2)
+    theaterChaseRainbow(strip)
+    changeLedColor(strip, Color(0, 0, 0))
 
-# Define functions which animate LEDs in various ways.
+    
 def colorWipe(strip, color, wait_ms=50):
     """Wipe color across display a pixel at a time."""
     for i in range(strip.numPixels()):
@@ -29,16 +32,11 @@ def colorWipe(strip, color, wait_ms=50):
         strip.show()
         time.sleep(wait_ms/1000.0)
 
-def theaterChase(strip, color, wait_ms=50, iterations=10):
-    """Movie theater light style chaser animation."""
-    for j in range(iterations):
-        for q in range(3):
-            for i in range(0, strip.numPixels(), 3):
-                strip.setPixelColor(i+q, color)
-            strip.show()
-            time.sleep(wait_ms/1000.0)
-            for i in range(0, strip.numPixels(), 3):
-                strip.setPixelColor(i+q, 0)
+def changeLedColor(strip, color):
+    """Wipe color across display a pixel at a time."""
+    for i in range(strip.numPixels()):
+        strip.setPixelColor(i, color)
+        strip.show()
 
 def wheel(pos):
     """Generate rainbow colors across 0-255 positions."""
@@ -50,14 +48,6 @@ def wheel(pos):
     else:
         pos -= 170
         return Color(0, pos * 3, 255 - pos * 3)
-
-def rainbow(strip, wait_ms=20, iterations=1):
-    """Draw rainbow that fades across all pixels at once."""
-    for j in range(256*iterations):
-        for i in range(strip.numPixels()):
-            strip.setPixelColor(i, wheel((i+j) & 255))
-        strip.show()
-        time.sleep(wait_ms/1000.0)
 
 def rainbowCycle(strip, wait_ms=20, iterations=5):
     """Draw rainbow that uniformly distributes itself across all pixels."""
@@ -78,42 +68,19 @@ def theaterChaseRainbow(strip, wait_ms=50):
             for i in range(0, strip.numPixels(), 3):
                 strip.setPixelColor(i+q, 0)
 
-def util_map(value, from_min, from_max, to_min, to_max):
-        from_range = from_max - from_min
-        to_range = to_max - to_min
 
-        proportion = from_range*1.0 / to_range*1.0
-        
-        final = (value / proportion) - to_min
-        return int(final)
-
-def changeLedColor(strip, color):
-    """Wipe color across display a pixel at a time."""
-    for i in range(strip.numPixels()):
-        strip.setPixelColor(i, color)
-        strip.show()
-
-# Main program logic follows:
 if __name__ == '__main__':
     # Create NeoPixel object with appropriate configuration.
     strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
     # Intialize the library (must be called once before other functions).
     strip.begin()
 
-    b = int(input("What is b? "))
-    g = int(input("What is g? "))
-    r = int(input("What is r? "))
+    changeLedColor(strip, Color(0, 0, 0))
 
-    changeLedColor(strip, Color(b, g, r))
+    client = mqtt.Client()
+    client.on_connect = on_connect
+    client.on_message = on_message
+    
+    client.connect("test.mosquitto.org", 1883, 60)
 
-    try:
-
-        while True:
-            b = int(input("What is b? "))
-            g = int(input("What is g? "))
-            r = int(input("What is r? "))
-            changeLedColor(strip, Color(b, g, r))
-
-                
-    except KeyboardInterrupt:
-        changeLedColor(strip, Color(0, 0, 0))
+    client.loop_forever()

@@ -53,6 +53,10 @@ Build the circuit of the photo to test
 
 And upload to NodeMCU
 
+## Utils
+
+<img src="./nodemcu-pinout.jpg" width="500">
+
 
 
 
