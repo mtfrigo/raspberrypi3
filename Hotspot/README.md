@@ -18,7 +18,7 @@ For the wifi implementation:
 
 Edimax EW-7811UN
 
-## 1: Hotspot with Ethernet client
+## 1: Hotspot with Ethernet connection
 
 ```
 sudo apt update
@@ -45,8 +45,45 @@ sudo reboot
 
 <img src="./hotspot7.png" width="300">
 
-Save
+Save and Reboot
+
+## 2.1: Hotspot with Wi-Fi connection 
+
+It is important to note that you need a WiFi dongle because of the raspiberry hardware limitation.
+
+"The Raspberry Pi is able to work as a wireless hotspot and simultanous connect to another hotspot as client. But the wifi device on the RasPi has a general limitation. The client connection cannot be bridged because lack of WDS (wireless distribution system) that is needed for bridging on wireless."
+
+The WiFi dongle used is [Edimax EW-7811UN](https://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/in/wireless_adapters_n150/ew-7811un/)
+
+1. The following commands must be run.
 
 ```
-sudo reboot
+sudo apt update
+sudo apt install network-manager network-manager-gnome openvpn \openvpn-systemd-resolved network-manager-openvpn \network-manager-openvpn-gnome
+sudo apt purge openresolv dhcpcd5
+sudo ln -sf /lib/systemd/resolv.conf /etc/resolv.conf
 ```
+
+2. Delete `Wireless & Wired Network` and the respective `Space` from Task Bar.
+
+<img src="./hotspot1.png" width="300">
+<img src="./hotspot2.png" width="300">
+
+3. Reboot `sudo reboot`
+
+4. Now before setting up the Hotspot you have to connect to your WiFi connection.
+
+It is important to point that you have to connect as client to the WiFi with the WiFi dongle, because it doesn't work as a WiFi repeater (but the build in WiFi hardware on Raspi does).
+
+You just have to click on the WiFi you want to connect on the **WiFi Networks (Edimax EW-7811Un)**, and set the correct password. 
+
+<img src="./wifihotspot.png" width="300">
+
+5. Now you should create the Hotspot.
+
+<img src="./wifi1.png" width="300">
+<img src="./wifi2.png" width="300">
+<img src="./wifi3.png" width="300">
+
+
+
