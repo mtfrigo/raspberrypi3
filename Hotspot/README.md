@@ -97,7 +97,7 @@ SSID is the connection name that will be displayed.
 
 <img src="./wifi5.png" width="300">
 
-8. Set up the priority as 1, althoug the other connection could take the Raspiberry Pi hardware and the Hotspot wont work!
+8. Set up the priority as 1, otherwise the connection as client could get the Raspberry Pi hardware and the Hotspot wont work!
 
 <img src="./wifi8.png" width="300">
 
