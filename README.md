@@ -40,38 +40,9 @@ And the line `ca-cert=/root/.cat_installer/ca.pem` to `ca-cert=/home/pi/Desktop/
 
 Reboot and you are done!
 
-### Hotspot (tested with Stretch)
+### Hotspot
 
-```
-sudo apt update
-sudo apt install network-manager network-manager-gnome openvpn \openvpn-systemd-resolved network-manager-openvpn \network-manager-openvpn-gnome
-sudo apt purge openresolv dhcpcd5
-sudo ln -sf /lib/systemd/resolv.conf /etc/resolv.conf
-```
-
-<img src="./Hotspot/hotspot1.png" width="200">
-
-<img src="./Hotspot/hotspot2.png" width="200">
-
-```
-sudo reboot
-```
-
-<img src="./Hotspot/hotspot3.png" width="200">
-
-<img src="./Hotspot/hotspot4.png" width="200">
-
-<img src="./Hotspot/hotspot5.png" width="200">
-
-<img src="./Hotspot/hotspot6.png" width="200">
-
-<img src="./Hotspot/hotspot7.png" width="200">
-
-Save
-
-```
-sudo reboot
-```
+[Read this](https://github.com/mtfrigo/raspberrypi3/tree/master/Hotspot)
 
 ### How to connect to vpn in raspberry pi
 

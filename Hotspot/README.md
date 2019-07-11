@@ -103,7 +103,43 @@ SSID is the connection name that will be displayed.
 
 9. Save and Reboot.
 
+## 2.2: Hotspot with Eduroam connection 
 
+It is basically the same as above, but you have to setup the client connection as Eduroam.
 
+1. Follow the above instructions to number 3.
 
+2.1. First you have to download the Linux Script from [eduroam-cat](https://cat.eduroam.org/)
+
+2.2 You have to transfer to your Raspi the script `eduroam-linux-Universitat_Stuttgart-STUDENT.py` (it could be via SSH)
+
+2.3 Run the script with sudo `sudo python path/eduroam-linux-Universitat_Stuttgart-STUDENT.py`
+
+2.4 It will ask you credentials.
+
+2.5 After installation, copy the certificate from `/root/.cat_installer/ca.pem/` to another folder (it worked on Desktop)
+
+`sudo cp /root/.cat_installer/ca.pem /home/pi/Desktop`
+
+2.6 Edit the eduroam config file created by the installation. Remove the root permission and change the certificate path to the new one.
+
+`sudo nano /etc/NetworkManager/system-connections/eduroam.nmconnection`
+
+Edit the line `permissions=:user::root:;` to `permissions=`
+
+Edit the line `ca-cert=/root/.cat_installer/ca.pem` to `ca-cert=/home/pi/Desktop/ca.pem`
+
+Save and exit.
+
+3. Now your eduroam should work after rebooting, but first follow the remaining steps from the guide above (5 to 9).
+
+## 3: Hotspot with VPN
+
+To use VPN you just need to install openconnect with `sudo apt-get install openconnect`
+
+And then, run the command
+
+`sudo openconnect -u USER_ID -b VPN_ADDRESS`
+
+Where **USER_ID** is your vpn id and **VPN_ADDRESS** is the address for the VPN (*vpn.informatik.uni-stuttgart.de at the moment*)
 
