@@ -79,11 +79,31 @@ You just have to click on the WiFi you want to connect on the **WiFi Networks (E
 
 <img src="./wifihotspot.png" width="300">
 
-5. Now you should create the Hotspot.
+5. Now you should create the Hotspot. 
 
 <img src="./wifi1.png" width="300">
 <img src="./wifi2.png" width="300">
 <img src="./wifi3.png" width="300">
+
+6. It is important here to setup this connection to the Raspberry Pi build in WiFi hardware. For this, you have to select the wlan that begin with **B8** in the device selector. And dont forget to select Mode as **Hotspot**.
+
+Connection name does not matter, it is the name that gonna be shown to you.
+
+SSID is the connection name that will be displayed.
+
+<img src="./wifi4.png" width="300">
+
+7. Set up a password for the connection.
+
+<img src="./wifi5.png" width="300">
+
+8. Set up the priority as 1, althoug the other connection could take the Raspiberry Pi hardware and the Hotspot wont work!
+
+<img src="./wifi8.png" width="300">
+
+9. Save and Reboot.
+
+
 
 
 
