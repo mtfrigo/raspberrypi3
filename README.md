@@ -9,52 +9,36 @@
 Where wlan0 is the interface.
 
 
-### How to connect on the EDUROAM on raspberry pi 3 B
+### How to connect on the EDUROAM on raspberry pi 3 B (after july 2019) (tested with Buster)
 
-Edit the following files
+First you need, with another computer, download the file from https://cat.eduroam.org/ to Linux installer...
 
-It could be with your favorite text editor
+Then you will download a python script,
 
-e.g. `sudo nano`
+Somehow transfer this file to the Raspi (pendrive, scp with ethernet/another wifi, etc),
 
-/etc/network/interfaces
+Before running the script you need to install the following stuff:
 
 ```
-source-directory /etc/network/interfaces.d
-
-auto lo
-iface lo inet loopback
-
-iface eth0 inet manual
-
-allow-hotplug wlan0
-iface wlan0 inet manual
-wpa-conf /et/wpa_supplicant/wpa_supplicant.conf
-iface  default inet dhcp
+sudo apt update
+sudo apt install network-manager network-manager-gnome openvpn \openvpn-systemd-resolved network-manager-openvpn \network-manager-openvpn-gnome
+sudo apt purge openresolv dhcpcd5
+sudo ln -sf /lib/systemd/resolv.conf /etc/resolv.conf
 ```
 
+Reboot and run the script, it will ask your credentials for Eduroam
 
-/etc/wpa_supplicaant/wpa_supplicant.conf
+Copy the certificate generated to another folder (it worked on desktop `sudo cp /root/.cat_installer/ca.pem ~/Desktop`)
 
+Then, edit the file created for the script in  `/etc/NetworkManager/system-connections/`
 
-``` 
-ctrl_interface=DIR=/var/run/wpa_supplicabt GROUP=netdev
-update_config = 1
-country = GB
+In my case it was `/etc/NetworkManager/system-connections/eduroam.nmconnection`
 
-network={
-    ssid="eduroam"
-    priority=1
-    key_mgmt=WPA-EAP
-    auth_alg=OPEN
-    eap=PEAP
-    identity="YOUR ID"
-    password="YOUR PASSWORD"
-    phase2="auto=NONE"
-}
-```
+Edit the line which says `permissions=:user:root:;` to `permissions=`
 
-Then reboot.
+And the line `ca-cert=/root/.cat_installer/ca.pem` to `ca-cert=/home/pi/Desktop/ca.pem`
+
+Reboot and you are done!
 
 ### Hotspot (tested with Stretch)
 
