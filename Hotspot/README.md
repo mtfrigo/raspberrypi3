@@ -7,8 +7,11 @@ There are two differents approches, the first one the Raspi is connect to the Et
 ## Software and Hardware
 
 Raspiberry Pi 3B
+
 Raspibian GNU/Linux 10
+
 Buster
+
 Raspibian
 
 For the wifi implementation:
@@ -24,23 +27,23 @@ sudo apt purge openresolv dhcpcd5
 sudo ln -sf /lib/systemd/resolv.conf /etc/resolv.conf
 ```
 
-<img src="./hotspot1.png" width="200">
+<img src="./hotspot1.png" width="300">
 
-<img src="./hotspot2.png" width="200">
+<img src="./hotspot2.png" width="300">
 
 ```
 sudo reboot
 ```
 
-<img src="./hotspot3.png" width="200">
+<img src="./hotspot3.png" width="300">
 
-<img src="./hotspot4.png" width="200">
+<img src="./hotspot4.png" width="300">
 
-<img src="./hotspot5.png" width="200">
+<img src="./hotspot5.png" width="300">
 
-<img src="./hotspot6.png" width="200">
+<img src="./hotspot6.png" width="300">
 
-<img src="./hotspot7.png" width="200">
+<img src="./hotspot7.png" width="300">
 
 Save
 
