@@ -99,7 +99,7 @@ SSID is the connection name that will be displayed.
 
 8. Set up the priority as 1, otherwise the connection as client could get the Raspberry Pi hardware and the Hotspot wont work!
 
-<img src="./wifi8.png" width="300">
+<img src="./wifi6.png" width="300">
 
 9. Save and Reboot.
 
