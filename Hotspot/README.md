@@ -1,7 +1,21 @@
 # Hotspot
 
+The following guide aim to use the Raspiberry Pi as a Hotspot.
 
-## Stretch
+There are two differents approches, the first one the Raspi is connect to the Ethernet as a uplink. The second one the Raspi is connect to a wifi.
+
+## Software and Hardware
+
+Raspiberry Pi 3B
+Raspibian GNU/Linux 10
+Buster
+Raspibian
+
+For the wifi implementation:
+
+Edimax EW-7811UN
+
+## 1: Hotspot with Ethernet client
 
 ```
 sudo apt update
