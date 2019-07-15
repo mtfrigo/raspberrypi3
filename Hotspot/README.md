@@ -143,3 +143,8 @@ And then, run the command
 
 Where **USER_ID** is your vpn id and **VPN_ADDRESS** is the address for the VPN (*vpn.informatik.uni-stuttgart.de at the moment*)
 
+## Bugs
+
+Sometimes when you turn on the Raspi the internet will not work anymore... That's because of the Date problably is incorrect.
+
+You can fix it by setting the time manually to be somewhere accurate `sudo date -s "xx/yy/20zz hh:mm"`
