@@ -38,7 +38,7 @@ Edit the line which says `permissions=:user:root:;` to `permissions=`
 
 And the line `ca-cert=/root/.cat_installer/ca.pem` to `ca-cert=/home/pi/Desktop/ca.pem`
 
-Reboot and you are done!
+Reboot.
 
 ### Hotspot
 
