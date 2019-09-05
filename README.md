@@ -42,7 +42,7 @@ Reboot and you are done!
 
 ### Hotspot
 
-[Read this](https://github.com/mtfrigo/raspberrypi3/tree/master/Hotspot)
+[Read this](https://github.com/mtfrigo/raspberrypi3/tree/master/Hotspots)
 
 ### How to connect to vpn in raspberry pi
 
