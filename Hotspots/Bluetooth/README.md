@@ -7,7 +7,7 @@ The version used for the scripts of the Raspberry Pi is
 
 ![Bluetooth example](pi_config.png)
 
-(NOOBS Stretch)
+(NOOBS Stretch/Buster)
 
 # Using BluetoothCtl
 
