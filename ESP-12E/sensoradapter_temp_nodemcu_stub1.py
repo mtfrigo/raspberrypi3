@@ -9,6 +9,11 @@ import os, fnmatch
 from os.path import expanduser
 import random
 
+import re
+
+
+from threading import Thread
+
 ############################
 # MQTT Client
 ############################
@@ -16,6 +21,8 @@ class mqttClient(object):
    hostname = 'localhost'
    port = 1883
    clientid = ''
+
+   lastValue = 0
 
    def __init__(self, hostname, port, clientid):
       self.hostname = hostname
@@ -28,10 +35,18 @@ class mqttClient(object):
 
       # set mqtt client callbacks
       self.client.on_connect = self.on_connect
+      self.client.on_message = self.on_message
 
    # The callback for when the client receives a CONNACK response from the server.
    def on_connect(self, client, userdata, flags, rc):
       print("[" + datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3] + "]: " + "ClientID: " + self.clientid + "; Connected with result code " + str(rc))
+
+   def on_message(self, client, userdata, message):
+      self.lastValue = float(str(message.payload.decode("utf-8")))
+      print("message received " ,str(message.payload.decode("utf-8")))
+      print("message topic=",message.topic)
+      print("message qos=",message.qos)
+      print("message retain flag=",message.retain)
 
    # publishes message to MQTT broker
    def sendMessage(self, topic, msg):
@@ -40,7 +55,9 @@ class mqttClient(object):
 
    # connects to MQTT Broker
    def start(self):
+      #self.client.connect(self.hostname, self.port, 60)
       self.client.connect(self.hostname, self.port, 60)
+      self.client.subscribe("MTFESP")
 
       #runs a thread in the background to call loop() automatically.
       #This frees up the main thread for other work that may be blocking.
@@ -48,22 +65,24 @@ class mqttClient(object):
       #Call loop_stop() to stop the background thread.
       self.client.loop_start()
 
+   def getLastValue(self):
+      return self.lastValue
 
 ############################
 # MAIN
 ############################
 def main(argv):
 
+   hostname = 'localhost'
+   topic_pub = 'test'
+   
    configFileName = "connections.txt"
    topics = []
    brokerIps = []
    configExists = False
 
-   hostname = 'localhost'
-   topic_pub = 'test'
-   
    configFile = os.path.join(os.getcwd(), configFileName)
-   
+
    while (not configExists):
        configExists = os.path.exists(configFile)
        time.sleep(1)
@@ -81,31 +100,40 @@ def main(argv):
        brokerIps.append(ip)
 
    # END parsing file
-       
+   
    hostname = brokerIps [0]
    topic_pub = topics [0]
    topic_splitted = topic_pub.split('/')
    component = topic_splitted [0]
    component_id = topic_splitted [1]
    
-   print("Connecting to: " + hostname + " pub on topic: " + topic_pub)
-   
+   #print("Connecting to: " + hostname + " pub on topic: " + topic_pub)
+
    # --- Begin start mqtt client
    id = "id_%s" % (datetime.utcnow().strftime('%H_%M_%S'))
    publisher = mqttClient(hostname, 1883, id)
+   
+   subscriber = mqttClient("localhost", 1883, id)
+
    publisher.start()
+   subscriber.start()
 
    try:  
       while True:
          # messages in json format
          # send message, topic: temperature
          t = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
-         outputValue = random.choice([20.0, 20.5, 21.0, 22.0, 22.5, 25.5, 30.0, 30.1, 31.5, 29.9, 35.0])
-         msg_pub = {"component": component.upper(), "id": component_id, "value": "%f" % (outputValue) }
-         publisher.sendMessage (topic_pub, json.dumps(msg_pub))
-         #publisher.sendMessage (topic_pub, "42")
+               
+         #print (publisher.getLastValue())
+
+         value = subscriber.getLastValue()
+
+         if(value != 0):
+            msg_pub = {"component": component.upper(), "id": component_id, "value": "%f" % (value) }
+            publisher.sendMessage (topic_pub, json.dumps(msg_pub))
 
          time.sleep(30)
+
    except:
       e = sys.exc_info()
       print ("end due to: ", str(e))

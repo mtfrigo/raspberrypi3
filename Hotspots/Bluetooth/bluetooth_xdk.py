@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sys, getopt
-import paho.mqtt.client as mqtt
 from datetime import datetime
 import time
 import json
@@ -69,6 +68,9 @@ class Bluepy(DefaultDelegate):
             self._peripheral_address = dev['id']
 
       return self._peripheral_address
+
+   def setXDKAddress(self, mac):
+      self._peripheral_address = mac
 
    def handleNotification(self, cHandle, data):
 
@@ -152,9 +154,13 @@ class Bluepy(DefaultDelegate):
 
    def BluetoothFlow(self):
 
-      self.scan(3)
+      #self.scan(3)
 
-      xdk_address = self.findXDKAddress()
+      #xdk_address = self.findXDKAddress()
+
+      #xdk_address = "f1:63:c2:c4:4b:fe"
+      xdk_address = "f1:63:c2:c4:4b:fe"
+      self.setXDKAddress(xdk_address)
 
       print ("\nXDK MAC: "+ xdk_address)
 

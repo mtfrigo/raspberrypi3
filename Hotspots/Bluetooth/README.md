@@ -61,7 +61,7 @@ sudo pip install bluepy
 
 Installation  (Python3)
 
-```
+**```**
 sudo apt-get install python3-pip libglib2.0-dev
 sudo pip3 install bluepy
 ```
