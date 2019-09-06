@@ -1,22 +1,21 @@
 # Hotspot
 
-The following guide aim to use the Raspiberry Pi as a Hotspot.
+The following guide aim to configure the Raspiberry Pi as a WiFi Hotspot.
 
-There are two differents approches, the first one the Raspi is connect to the Ethernet as a uplink. The second one the Raspi is connect to a wifi.
+There are two differents approches, the first one the Raspi is connect to the Ethernet as a uplink. The second one the Raspi is connected to a wifi.
 
 ## Software and Hardware
 
+```
 Raspiberry Pi 3B
-
 Raspibian GNU/Linux 10
-
 Buster
-
 Raspibian
+```
 
 For the wifi implementation:
 
-Edimax EW-7811UN
+`Edimax EW-7811UN`
 
 ## 1: Hotspot with Ethernet connection
 
@@ -49,13 +48,14 @@ Save and Reboot
 
 ## 2.1: Hotspot with Wi-Fi connection 
 
-It is important to note that you need a WiFi dongle because of the raspiberry hardware limitation.
+*The Raspberry Pi is able to work as a wireless hotspot and simultanous connect to another hotspot as client. But the wifi device on the RasPi has a general limitation. The client connection cannot be bridged because lack of WDS (wireless distribution system) that is needed for bridging on wireless.*
 
-"The Raspberry Pi is able to work as a wireless hotspot and simultanous connect to another hotspot as client. But the wifi device on the RasPi has a general limitation. The client connection cannot be bridged because lack of WDS (wireless distribution system) that is needed for bridging on wireless."
+
+It is important to note that you need a WiFi dongle because of the raspberry pi hardware limitation.
 
 The WiFi dongle used is [Edimax EW-7811UN](https://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/in/wireless_adapters_n150/ew-7811un/)
 
-1. The following commands must be run.
+1. The following commands must be executed.
 
 ```
 sudo apt update
@@ -85,7 +85,7 @@ You just have to click on the WiFi you want to connect on the **WiFi Networks (E
 <img src="./wifi2.png" width="300">
 <img src="./wifi3.png" width="300">
 
-6. It is important here to setup this connection to the Raspberry Pi build in WiFi hardware. For this, you have to select the wlan that begin with **B8** in the device selector. And dont forget to select Mode as **Hotspot**.
+6. It is important to setup this connection to the Raspberry Pi build in WiFi hardware. For this, you have to select the wlan that begin with **B8** in the device selector. And dont forget to select Mode as **Hotspot**.
 
 Connection name does not matter, it is the name that gonna be shown to you.
 
@@ -147,4 +147,4 @@ Where **USER_ID** is your vpn id and **VPN_ADDRESS** is the address for the VPN 
 
 Sometimes when you turn on the Raspi the internet will not work anymore... That's because of the Date problably is incorrect.
 
-You can fix it by setting the time manually to be somewhere accurate `sudo date -s "xx/yy/20zz hh:mm"`
+You can fix it by setting the time manually to be sometime accurate `sudo date -s "xx/yy/20zz hh:mm"`
