@@ -1,6 +1,6 @@
 # Hotspot
 
-The following guide aim to configure the Raspiberry Pi as a WiFi Hotspot.
+The following guide aims to configure the Raspberry Pi as a WiFi Hotspot.
 
 There are two differents approches, the first one the Raspi is connect to the Ethernet as a uplink. The second one the Raspi is connected to a wifi.
 
