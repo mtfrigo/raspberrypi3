@@ -7,10 +7,10 @@ There are two differents approches, the first one the Raspi is connect to the Et
 ## Software and Hardware
 
 ```
-Raspiberry Pi 3B
-Raspibian GNU/Linux 10
+Raspberry Pi 3B
+Raspberry GNU/Linux 10
 Buster
-Raspibian
+Raspberry
 ```
 
 For the wifi implementation:
@@ -19,6 +19,8 @@ For the wifi implementation:
 
 ## 1: Hotspot with Ethernet connection
 
+1. The following commands must be executed.
+
 ```
 sudo apt update
 sudo apt install network-manager network-manager-gnome openvpn \openvpn-systemd-resolved network-manager-openvpn \network-manager-openvpn-gnome
@@ -26,13 +28,18 @@ sudo apt purge openresolv dhcpcd5
 sudo ln -sf /lib/systemd/resolv.conf /etc/resolv.conf
 ```
 
+2. Delete `Wireless & Wired Network` and the respective `Space` from Task Bar.
+
 <img src="./hotspot1.png" width="300">
 
 <img src="./hotspot2.png" width="300">
 
+3. Reboot 
 ```
 sudo reboot
 ```
+
+4. Now you should create the Hotspot. 
 
 <img src="./hotspot3.png" width="300">
 
@@ -40,11 +47,17 @@ sudo reboot
 
 <img src="./hotspot5.png" width="300">
 
+5. Connection name does not matter, it is the name that gonna be shown to you.
+
+SSID is the connection name that will be displayed.
+
 <img src="./hotspot6.png" width="300">
+
+6. Set up a password for the connection.
 
 <img src="./hotspot7.png" width="300">
 
-Save and Reboot
+7. Save and Reboot
 
 ## 2.1: Hotspot with Wi-Fi connection 
 
