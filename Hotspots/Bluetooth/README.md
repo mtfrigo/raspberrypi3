@@ -1,13 +1,24 @@
 # Install
 
-Follow all these steps: [Deploying BlueZ v5.50 on Raspberry Pi3](https://3pl46c46ctx02p7rzdsvsg21-wpengine.netdna-ssl.com/wp-content/uploads/2019/03/T1804_How-to-set-up-BlueZ_LFC_FINAL-1.pdf?utm_campaign=developer&utm_source=internal&utm_medium=blog&utm_content=Deploying-BlueZ-v5.50-on-Raspberry-Pi3-Update)
+Follow all these steps: [Deploying BlueZ v5.50 on Raspberry Pi 3](https://3pl46c46ctx02p7rzdsvsg21-wpengine.netdna-ssl.com/wp-content/uploads/2019/03/T1804_How-to-set-up-BlueZ_LFC_FINAL-1.pdf?utm_campaign=developer&utm_source=internal&utm_medium=blog&utm_content=Deploying-BlueZ-v5.50-on-Raspberry-Pi3-Update)
 
-The version used for the scripts of the Raspberry Pi is
+The version used for the scripts of the Raspberry Pi is **Buster**
 
+# Bluepy
 
-![Bluetooth example](pi_config.png)
+Installation  (Python2)
 
-(NOOBS Stretch/Buster)
+```
+sudo apt-get install python-pip libglib2.0-dev
+sudo pip install bluepy
+```
+
+Installation  (Python3)
+
+```
+sudo apt-get install python3-pip libglib2.0-dev
+sudo pip3 install bluepy
+```
 
 # Using BluetoothCtl
 
@@ -50,18 +61,4 @@ With the device connected
     And then use `read`
 
 
-## Bluepy
 
-Installation  (Python2)
-
-```
-sudo apt-get install python-pip libglib2.0-dev
-sudo pip install bluepy
-```
-
-Installation  (Python3)
-
-**```**
-sudo apt-get install python3-pip libglib2.0-dev
-sudo pip3 install bluepy
-```
